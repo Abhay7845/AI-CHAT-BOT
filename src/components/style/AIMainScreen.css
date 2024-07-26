@@ -1,0 +1,14 @@
+.AutoSuggestTetx {
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 4px;
+    margin: 2px;
+}
+
+.AutoSuggestTetx:hover {
+    border: 1px solid #5555ef;
+}

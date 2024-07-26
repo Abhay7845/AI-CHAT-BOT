@@ -1,0 +1,63 @@
+.TypeAnimationStyle {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #120321e4;
+    color: white;
+}
+
+@media screen and (max-width:770px) {
+    .TypeAnimationStyle {
+        display: none;
+    }
+}
+
+.loginOrSignUpStyle {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginSignBtn {
+    border: 1.5px solid blue;
+    background-color: blue;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+}
+
+.loginSignBtn:hover {
+    color: blue;
+    background-color: white;
+}
+
+.redirectionTab {
+    border: 1px solid #aca9a9;
+    padding: 12px;
+    color: #000000;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.redirectionTab:hover {
+    background-color: #90ee90;
+    border: 1px solid #90ee90;
+    cursor: pointer;
+}
+
+.activeTab {
+    background-color: #90ee90;
+    border: 1px solid #898484;
+    cursor: pointer;
+    text-align: center;
+    padding: 7px;
+    width: 100%;
+}
