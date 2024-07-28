@@ -3,7 +3,6 @@ import { BsPersonCircle } from "react-icons/bs";
 import Tippy from '@tippyjs/react';
 import { Link, useNavigate } from "react-router-dom";
 
-
 const SideBaar = () => {
     const navigate = useNavigate();
     const Logout = () => {
