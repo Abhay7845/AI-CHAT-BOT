@@ -42,7 +42,7 @@ const UserSignUp = () => {
     };
     return (
         <div className="loginPageStyle">
-            <div style={{ height: "350px", width: "550px", padding: "5px" }}>
+            <div style={{ height: "350px", width: "550px", padding: "20px" }}>
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
                         <LockOutlinedIcon />
@@ -63,7 +63,7 @@ const UserSignUp = () => {
                 <div className="mb-2 d-flex justify-content-between">
                     <Link to="/auth/log-in">Already have an account? Sign in</Link>
                     <button className="btn btn-primary" type="button" onClick={GoStudentRegister}>
-                        {loading === true ? <span><span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" /><span>Loading...</span></span> : <span>SIGN UP</span>}
+                        {loading === true ? <span><span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" /><span>Wait...</span></span> : <span>SIGN UP</span>}
                     </button>
                 </div>
             </div>

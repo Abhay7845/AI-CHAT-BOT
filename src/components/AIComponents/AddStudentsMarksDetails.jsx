@@ -31,6 +31,12 @@ const AddStudentsMarksDetails = () => {
             "Hindi": parseInt(hindi),
             "Computer": parseInt(computer)
         }
+        if (!studentName) return toast.error("Please Enter Student Name", { theme: "colored" });
+        if (!mathematics) return toast.error("Please Enter Mathematis Marks", { theme: "colored" });
+        if (!physics) return toast.error("Please Enter Physics Marks", { theme: "colored" });
+        if (!english) return toast.error("Please Enter English Marks", { theme: "colored" });
+        if (!hindi) return toast.error("Please Enter Hindi Marks", { theme: "colored" });
+        if (!computer) return toast.error("Please Enter Computer Marks", { theme: "colored" });
         if (mathematics && physics && english && hindi && computer) {
             setLoading(true);
             axios.post(`${HOST_URL}/insert/students/marks/details`, marksPayload)
@@ -46,8 +52,6 @@ const AddStudentsMarksDetails = () => {
                     toast.error("Internal Server Error", { theme: "colored" });
                     setLoading(false);
                 });
-        } else {
-            toast.error("Please Enter All Subjects Marks", { theme: "colored" });
         }
     }
     return (
@@ -74,7 +78,14 @@ const AddStudentsMarksDetails = () => {
                             className="form-control"
                             placeholder="Mathematics"
                             value={mathematics}
-                            onChange={(e) => setMathematics(e.target.value.replace(/\D/g, ''))}
+                            onChange={(e) => {
+                                const val = e.target.value.replace(/\D/g, '');
+                                if (val > 100) {
+                                    toast.warn("Marks should not grater than 100", { theme: "colored" });
+                                } else {
+                                    setMathematics(val);
+                                }
+                            }}
                         />
                     </div>
                     <div className="col-md-2">
@@ -83,7 +94,14 @@ const AddStudentsMarksDetails = () => {
                             className="form-control"
                             placeholder="Physics"
                             value={physics}
-                            onChange={(e) => setPhysics(e.target.value.replace(/\D/g, ''))}
+                            onChange={(e) => {
+                                const val = e.target.value.replace(/\D/g, '');
+                                if (val > 100) {
+                                    toast.warn("Marks should not grater than 100", { theme: "colored" });
+                                } else {
+                                    setPhysics(val);
+                                }
+                            }}
                         />
                     </div>
                     <div className="col-md-2">
@@ -92,7 +110,14 @@ const AddStudentsMarksDetails = () => {
                             className="form-control"
                             placeholder="English"
                             value={english}
-                            onChange={(e) => setEnglish(e.target.value.replace(/\D/g, ''))}
+                            onChange={(e) => {
+                                const val = e.target.value.replace(/\D/g, '');
+                                if (val > 100) {
+                                    toast.warn("Marks should not grater than 100", { theme: "colored" });
+                                } else {
+                                    setEnglish(val);
+                                }
+                            }}
                         />
                     </div>
                     <div className="col-md-2">
@@ -101,7 +126,14 @@ const AddStudentsMarksDetails = () => {
                             className="form-control"
                             placeholder="Hindi"
                             value={hindi}
-                            onChange={(e) => setHindi(e.target.value.replace(/\D/g, ''))}
+                            onChange={(e) => {
+                                const val = e.target.value.replace(/\D/g, '');
+                                if (val > 100) {
+                                    toast.warn("Marks should not grater than 100", { theme: "colored" });
+                                } else {
+                                    setHindi(val);
+                                }
+                            }}
                         />
                     </div>
                     <div className="col-md-3">
@@ -110,12 +142,19 @@ const AddStudentsMarksDetails = () => {
                             className="form-control"
                             placeholder="Computer"
                             value={computer}
-                            onChange={(e) => setComputer(e.target.value.replace(/\D/g, ''))}
+                            onChange={(e) => {
+                                const val = e.target.value.replace(/\D/g, '');
+                                if (val > 100) {
+                                    toast.warn("Marks should not grater than 100", { theme: "colored" });
+                                } else {
+                                    setComputer(val);
+                                }
+                            }}
                         />
                     </div>
                     <div className="d-flex justify-content-end">
                         <button className="btn btn-primary" type="button" onClick={SubmitStidentMarks}>
-                            {loading === true ? <span><span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" /><span>Loading...</span></span> : <span>SUBMIT</span>}
+                            {loading === true ? <span><span className="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" /><span>Wait...</span></span> : <span>SUBMIT</span>}
                         </button>
                     </div>
                 </div>
