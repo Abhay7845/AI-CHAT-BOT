@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import SideBaar from "./Sidebaar";
 import { toast } from 'react-toastify';
-import axios from "axios";
-import { HOST_URL } from "../common/HostApi";
+import { setting } from "../../API/EndPoint";
+import { APIInsertStdInfo } from "../../API/CommonCall";
 
 const AddStudentsMarksDetails = () => {
     const [studentName, setStudentName] = useState("");
@@ -39,7 +39,7 @@ const AddStudentsMarksDetails = () => {
         if (!computer) return toast.error("Please Enter Computer Marks", { theme: "colored" });
         if (mathematics && physics && english && hindi && computer) {
             setLoading(true);
-            axios.post(`${HOST_URL}/insert/students/marks/details`, marksPayload)
+            APIInsertStdInfo(setting.INSERT_STD_INFO, marksPayload)
                 .then(res => res).then(response => {
                     if (response.data.status === true) {
                         ClrInputField();

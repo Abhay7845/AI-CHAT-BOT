@@ -2,7 +2,6 @@ import React from "react";
 import { Tooltip, Legend, ResponsiveContainer, PieChart, Cell, Pie } from "recharts";
 
 const PieChartInfo = ({ studentsInfo }) => {
-    console.log("studentsInfo==>", studentsInfo);
     const COLORS = ["blue", "green", "gray", "red", "yellow"];
     const data = Array.isArray(studentsInfo) ? studentsInfo : [];
     return (

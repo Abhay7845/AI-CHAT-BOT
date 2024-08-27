@@ -6,12 +6,12 @@ import { CiPaperplane } from "react-icons/ci";
 import { toast } from 'react-toastify';
 import { BsPersonCircle, BsFillMicFill, BsFillVolumeUpFill, BsFillMicMuteFill } from "react-icons/bs";
 import VoiceLoader from "../common/VoiceLoader";
-import axios from "axios";
 import { useSpeechSynthesis } from 'react-speech-kit';
-import { HOST_URL } from '../../components/common/HostApi'
 import { ChartFormate, StudentsHeaders } from "../DataList/StudentsHeaders";
 import BarChartInfo from "../ChartsComponents/BarChartsInfo";
 import PieChartInfo from "../ChartsComponents/PieChartInfo";
+import { setting } from "../../API/EndPoint";
+import { APIQuarySolve } from "../../API/CommonCall";
 
 const AIMainScreen = () => {
     const [autoSuggest, setAutoSuggest] = useState("");
@@ -24,7 +24,7 @@ const AIMainScreen = () => {
     const GetResponseByAI = (autoSuggest) => {
         setLoading(true);
         const AiPayload = { text: autoSuggest }
-        axios.post(`${HOST_URL}/ai/chat_bot/queries/resolve`, AiPayload)
+        APIQuarySolve(setting.QUARY_SOLVE, AiPayload)
             .then(res => res).then(response => {
                 if (response.data.status === true) {
                     const aiRes = {

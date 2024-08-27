@@ -5,8 +5,8 @@ import { toast } from 'react-toastify';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { HOST_URL } from "../common/HostApi";
+import { APIRegister } from "../../API/CommonCall";
+import { setting } from "../../API/EndPoint";
 
 const UserSignUp = () => {
     const [userEmail, setUserEmail] = useState("");
@@ -22,8 +22,8 @@ const UserSignUp = () => {
         }
         if (userEmail && userPassword) {
             setLoading(true);
-            axios.post(`${HOST_URL}/register`, RegPayload).then(res => res)
-                .then(response => {
+            APIRegister(setting.REGISTER, RegPayload)
+                .then(res => res).then(response => {
                     if (response.data.status === true) {
                         localStorage.setItem("authToken", JSON.stringify(response.data.user));
                         toast.success("Account created successfully", { theme: "colored" });
@@ -40,6 +40,7 @@ const UserSignUp = () => {
             toast.error("Please Enter Email & Password", { theme: "colored" });
         }
     };
+
     return (
         <div className="loginPageStyle">
             <div style={{ height: "350px", width: "550px", padding: "20px" }}>

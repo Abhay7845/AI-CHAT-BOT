@@ -4,9 +4,9 @@ import { Avatar } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { HOST_URL } from "../common/HostApi";
 import { toast } from 'react-toastify';
+import { setting } from "../../API/EndPoint";
+import { APILogin } from "../../API/CommonCall";
 
 const UserLogin = () => {
     const [userEmail, setUserEmail] = useState("");
@@ -22,8 +22,8 @@ const UserLogin = () => {
         }
         if (userEmail && userPassword) {
             setLoading(true);
-            axios.post(`${HOST_URL}/login`, loginPayload).then(res => res)
-                .then(response => {
+            APILogin(setting.LOGIN, loginPayload)
+                .then(res => res).then(response => {
                     if (response.data.status === true) {
                         localStorage.setItem("authToken", JSON.stringify(response.data.user));
                         navigate("/ai/query/result");
